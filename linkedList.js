@@ -11,6 +11,18 @@ class LinkedList {
 	#tail = null;
 	#size = 0;
 
+	head() {
+		return this.#head;
+	}
+
+	tail() {
+		return this.#tail;
+	}
+
+	size() {
+		return this.#size;
+	}
+
 	toString() {
 		let string = "";
 		let tmp = this.#head;
@@ -21,6 +33,18 @@ class LinkedList {
 		}
 
 		return string.concat("null");
+	}
+
+	getNodesData() {
+		const data = [];
+		let tmp = this.#head;
+
+		while (tmp) {
+			data.push([tmp.key, tmp.value]);
+			tmp = tmp.link;
+		}
+
+		return data;
 	}
 
 	append(key, value) {
@@ -43,6 +67,39 @@ class LinkedList {
 			tmp = tmp.link;
 		}
 		return null;
+	}
+
+	remove(key) {
+		if (this.#head === null) {
+			return false;
+		}
+
+		if (this.#head.key === key) {
+			if (this.#head === this.#tail) {
+				this.#head = this.#tail = null;
+			} else {
+				this.#head = this.#head.link;
+			}
+			this.#size--;
+			return true;
+		}
+
+		let tmp = this.#head;
+		while (tmp.link !== null && tmp.link.key !== key) {
+			tmp = tmp.link;
+		}
+
+		if (tmp.link === null) {
+			return false;
+		}
+
+		if (tmp.link === this.#tail) {
+			this.#tail = tmp;
+		}
+
+		tmp.link = tmp.link.link;
+		this.#size--;
+		return true;
 	}
 }
 
