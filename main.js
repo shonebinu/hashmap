@@ -1,4 +1,5 @@
 import HashMap from "./hashmap.js";
+import HashSet from "./hashset.js";
 
 const test = new HashMap();
 
@@ -43,8 +44,78 @@ test.set("mountain", "green");
 test.set("forest", "emerald");
 
 test.set("sun", "orange");
+
 console.log(test.has("sun"));
 console.log(test.get("sun"));
-console.log(test.remove("sun"));
 
 console.log(test.entries());
+
+// HASH SET
+const set = new HashSet();
+
+// Add elements
+set.add("apple");
+set.add("banana");
+set.add("carrot");
+set.add("dog");
+set.add("elephant");
+set.add("frog");
+
+// Check size and entries
+console.log("Size:", set.size());
+console.log("Entries:", set.entries());
+
+// Check contains method
+console.log('Contains "banana":', set.contains("banana")); // true
+console.log('Contains "cat":', set.contains("cat")); // false
+
+// Remove an element
+console.log('Remove "dog":', set.remove("dog"));
+console.log("Size after removal:", set.size());
+
+// Clear the set
+set.clear();
+console.log("Size after clearing:", set.size());
+
+// Add more elements to trigger resize
+set.add("sun");
+set.add("moon");
+set.add("ocean");
+set.add("mountain");
+set.add("forest");
+
+// Check entries after resize
+console.log("Entries after resize:", set.entries());
+
+// Additional tests after resizing
+console.log('Contains "moon" after resize:', set.contains("moon")); // true
+console.log('Remove "sun" after resize:', set.remove("sun"));
+console.log('Entries after removing "sun":', set.entries());
+console.log("Bucket size: ", set.getCapacity());
+
+set.add("apple");
+console.log("Bucket size: ", set.getCapacity());
+set.add("banana");
+console.log("Bucket size: ", set.getCapacity());
+set.add("carrot");
+console.log("Bucket size: ", set.getCapacity());
+set.add("dog");
+console.log("Bucket size: ", set.getCapacity());
+set.add("elephant");
+console.log("Bucket size: ", set.getCapacity());
+set.add("frog");
+console.log("Bucket size: ", set.getCapacity());
+set.add("river");
+console.log("Bucket size: ", set.getCapacity());
+set.add("lake");
+console.log("Bucket size: ", set.getCapacity());
+set.add("desert");
+console.log("Bucket size: ", set.getCapacity());
+set.add("apple");
+console.log("Bucket size: ", set.getCapacity());
+set.add("valley");
+console.log("Bucket size: ", set.getCapacity());
+set.add("canyon");
+console.log("Bucket size: ", set.getCapacity());
+
+console.log(set.entries());

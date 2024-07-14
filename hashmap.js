@@ -25,6 +25,7 @@ class HashMap {
 
 	resizeAndRehash() {
 		const newCapacity = this.capacity * 2;
+		this.capacity = newCapacity;
 		const newBuckets = new Array(newCapacity).fill(null);
 
 		for (const [key, value] of this.entries()) {
@@ -37,7 +38,6 @@ class HashMap {
 			newBuckets[hC].append(key, value);
 		}
 
-		this.capacity = newCapacity;
 		this.buckets = newBuckets;
 	}
 
